@@ -1,11 +1,64 @@
 import React from 'react';
+import { NavLink } from 'react-router';
 
 const Header = () => {
+
+    const links = <>
+        <li><NavLink to='/'> Home</NavLink></li>
+        <li><NavLink to='/all-vehicles'> All Vehicles</NavLink></li>
+        <li><NavLink to='/add-vehicles'> Add Vehicle</NavLink></li>
+        <li><NavLink to='/my-vehicles'> My Vehicles</NavLink></li>
+        <li><NavLink to='/my-bookings'> My Bookings</NavLink></li>
+    </>
+
     return (
-        <div>
-            <h3>header</h3>
+        <div className="bg-base-100 shadow-sm">
+            <div className="container-default flex items-center justify-between py-4 pr-3 md:pr-0">
+
+                {/* Left: Logo + Mobile Dropdown */}
+                <div className="flex items-center space-x-4">
+                    <div className="dropdown">
+                        <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />
+                            </svg>
+                        </div>
+                        <ul
+                            tabIndex="-1"
+                            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow">
+                            {links}
+                        </ul>
+                    </div>
+
+                    <img className="w-20" src="https://i.postimg.cc/W3YZkWYg/travelease-logo.png" alt="Logo" />
+                </div>
+
+                {/* Center: Menu */}
+                <ul className="hidden lg:flex menu menu-horizontal px-1 mx-auto">
+                    {links}
+                </ul>
+
+                {/* Right: Avatar */}
+                <div className="flex items-center">
+                    <div className="dropdown dropdown-end">
+                        <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                            <div className="w-10 rounded-full">
+                                <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" alt="User" />
+                            </div>
+                        </div>
+                        <ul
+                            tabIndex="-1"
+                            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow">
+                            <li><a className="justify-between">Profile</a></li>
+                            <li><a>Settings</a></li>
+                            <li><a>Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
         </div>
-    );
-};
+    )
+}
 
 export default Header;

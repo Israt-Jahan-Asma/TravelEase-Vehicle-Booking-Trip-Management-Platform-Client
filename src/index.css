@@ -1,9 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&family=Sora:wght@100..800&display=swap');
+
 @import "tailwindcss";
 @plugin "daisyui";
 
-@plugin "daisyui/theme" {
-  name: "light";
-  default: true;
-  --color-primary: blue;
-  --color-secondary: teal;
+/* DaisyUI theme */
+@plugin "daisyui" {
+  themes: light --default;
+  --color-base-100: #F7F5F2;
+  --color-base-content: #bfa37c;
+  --color-primary: #ffffff;
+  --color-secondary: #0C1315;
+}
+
+/* Custom reusable components */
+@layer components {
+
+  /* Containers */
+  .container-default {
+    @apply w-full py-4 sm:py-6 md:py-8 lg:py-12 xl:py-16 max-w-[1440px] mx-auto;
+  }
+
+  .container-full {
+    @apply w-full;
+  }
+
+  .section {
+    @apply py-16;
+  }
+
+  /* Buttons */
+  .btn {
+    @apply inline-block rounded-full font-semibold transition-colors duration-300 ease-in-out;
+    @apply px-4 py-2 text-sm sm:px-5 sm:py-2.5 sm:text-base md:px-6 md:py-3 md:text-lg;
+  }
+
+  .btn-primary {
+    @apply bg-[#bfa37c] text-[#0C1315] hover:bg-[#a88c68];
+  }
+
+  .btn-secondary {
+    @apply bg-[#0C1315] text-[#ffffff] hover:bg-[#1b2325];
+  }
+
+  .btn-outline {
+    @apply border border-[#bfa37c] text-[#bfa37c] hover:bg-[#bfa37c] hover:text-[#0C1315];
+  }
+
+  .btn-light {
+    @apply bg-[#ffffff] text-[#0C1315] hover:bg-[#F7F5F2];
+  }
+
+  .btn-disabled {
+    @apply opacity-60 cursor-not-allowed;
+  }
+
+  /* Typography */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Epilogue', sans-serif;
+  }
+
+  body,
+  p,
+  li,
+  span {
+    font-family: 'Sora', sans-serif;
+  }
+
+  /* Responsive heading sizes */
+  h1 {
+    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl;
+  }
+
+  h2 {
+    @apply text-xl sm:text-xl md:text-2xl lg:text-3xl;
+  }
+
+  h3 {
+    @apply text-xl sm:text-xl md:text-3xl lg:text-3xl;
+  }
+
+  /* Responsive body text */
+  p,
+  li,
+  span {
+    @apply text-base sm:text-[15px] md:text-[17px];
+  }
+
 }
