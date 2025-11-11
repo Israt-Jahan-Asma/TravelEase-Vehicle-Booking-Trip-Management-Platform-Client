@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { use } from 'react';
 import { NavLink } from 'react-router';
+import { AuthContext } from '../context/AuthContext';
 const Header = () => {
+    const {user}= use(AuthContext)
+    console.log(user);
+    
 
     const links = <>
         <li><NavLink to='/'> Home</NavLink></li>
@@ -42,7 +46,7 @@ const Header = () => {
                     <div className="dropdown dropdown-end">
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                             <div className="w-10 rounded-full">
-                                <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" alt="User" />
+                                <img src={user?.photoURL} alt="User" />
                             </div>
                         </div>
                         <ul
