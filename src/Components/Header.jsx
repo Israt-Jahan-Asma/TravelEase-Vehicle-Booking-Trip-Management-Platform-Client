@@ -1,6 +1,5 @@
 import React from 'react';
 import { NavLink } from 'react-router';
-
 const Header = () => {
 
     const links = <>
@@ -12,11 +11,11 @@ const Header = () => {
     </>
 
     return (
-        <div className="bg-base-100 shadow-sm">
-            <div className="container-default flex items-center justify-between py-4 pr-3 md:pr-0">
+        <div className="bg-secondary text-accent shadow-sm">
+            <div className="container-default flex items-center justify-between pr-3 md:pr-0">
 
                 {/* Left: Logo + Mobile Dropdown */}
-                <div className="flex items-center space-x-4">
+                <div className="flex items-center ">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -34,7 +33,7 @@ const Header = () => {
                 </div>
 
                 {/* Center: Menu */}
-                <ul className="hidden lg:flex menu menu-horizontal px-1 mx-auto">
+                <ul className="hidden lg:flex menu menu-horizontal px-1 mx-auto ">
                     {links}
                 </ul>
 
@@ -53,6 +52,7 @@ const Header = () => {
                             <li><a>Settings</a></li>
                             <li><a>Logout</a></li>
                         </ul>
+                        <NavLink className='btn btn-primary ml-2' to='/login' > Login </NavLink>
                     </div>
                 </div>
 

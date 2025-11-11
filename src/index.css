@@ -1,15 +1,36 @@
 @import url('https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&family=Sora:wght@100..800&display=swap');
-
 @import "tailwindcss";
 @plugin "daisyui";
 
-/* DaisyUI theme */
 @plugin "daisyui" {
+
   themes: light --default;
-  --color-base-100: #F7F5F2;
-  --color-base-content: #bfa37c;
+}
+/* DaisyUI theme */
+@plugin "daisyui/theme" {
+  name: "light";
+  default: true;
+  --color-base: #F7F5F2;
+  --color-accent: #bfa37c;
   --color-primary: #ffffff;
   --color-secondary: #0C1315;
+}
+/* .btn {
+  @apply inline-block rounded-full font-semibold transition-colors duration-300 ease-in-out px-4 py-2 text-sm sm:px-5 sm:py-2.5 sm:text-base md:px-6 md:py-3 md:text-lg;
+} */
+
+.btn-primary {
+  @apply bg-[#bfa37c] text-[#0C1315] hover:bg-[#a88c68] rounded-full font-semibold border-0 shadow-none;
+}
+.btn-primary:hover {
+  @apply bg-[#a88c68];
+}
+
+.btn-secondary {
+  @apply bg-[#0C1315] text-[#ffffff] hover:bg-[#1b2325] rounded-full font-semibold border-0 shadow-none;;
+}
+.btn-secondary:hover {
+  @apply bg-[#1b2325];
 }
 
 /* Custom reusable components */
@@ -17,7 +38,7 @@
 
   /* Containers */
   .container-default {
-    @apply w-full py-4 sm:py-6 md:py-8 lg:py-12 xl:py-16 max-w-[1440px] mx-auto;
+    @apply w-full p-4 max-w-[1440px] mx-auto ;
   }
 
   .container-full {
@@ -29,18 +50,7 @@
   }
 
   /* Buttons */
-  .btn {
-    @apply inline-block rounded-full font-semibold transition-colors duration-300 ease-in-out;
-    @apply px-4 py-2 text-sm sm:px-5 sm:py-2.5 sm:text-base md:px-6 md:py-3 md:text-lg;
-  }
-
-  .btn-primary {
-    @apply bg-[#bfa37c] text-[#0C1315] hover:bg-[#a88c68];
-  }
-
-  .btn-secondary {
-    @apply bg-[#0C1315] text-[#ffffff] hover:bg-[#1b2325];
-  }
+  
 
   .btn-outline {
     @apply border border-[#bfa37c] text-[#bfa37c] hover:bg-[#bfa37c] hover:text-[#0C1315];
@@ -90,5 +100,4 @@
   span {
     @apply text-base sm:text-[15px] md:text-[17px];
   }
-
 }
