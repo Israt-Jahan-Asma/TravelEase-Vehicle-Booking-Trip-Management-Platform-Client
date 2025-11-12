@@ -16,7 +16,7 @@ const ViewDetails = () => {
             name: vehicle.name,
             image: vehicle.image,
             price: vehicle.price,
-            userEmail: userEmail, // later replace with user.email
+            userEmail: user.email, // later replace with user.email
             createdAt: new Date(),
         };
 

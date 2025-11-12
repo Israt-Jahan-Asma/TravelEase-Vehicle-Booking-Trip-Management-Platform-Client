@@ -4,10 +4,10 @@ import { AuthContext } from '../context/AuthContext';
 import { LuEye } from "react-icons/lu";
 import { LuEyeClosed } from "react-icons/lu";
 import { FaGoogle } from "react-icons/fa";
-import { GoogleAuthProvider } from 'firebase/auth';
+import { GoogleAuthProvider, sendPasswordResetEmail } from 'firebase/auth';
 import { toast } from 'react-toastify';
 const Login = () => {
-    const { signIn, signInWithGoogle } = use(AuthContext)
+    const { signInUser, signInWithGoogle, resetPassword } = use(AuthContext)
     const location = useLocation()
     const navigate = useNavigate()
     const [email, setEmail] = useState('')
@@ -21,7 +21,7 @@ const Login = () => {
         const password = form.password.value
 
 
-        signIn(email, password)
+        signInUser(email, password)
             .then(result => {
                 const user = result.user
                 toast.success('You have login successfully!')
@@ -35,9 +35,21 @@ const Login = () => {
                 setError(errorCode, errorMessage)
             })
     }
-    const handleForget = () => {
-        navigate('/forget-password', { state: { email } })
-    }
+    const handleForget = async (e) => {
+        e.preventDefault();
+        if (!email) {
+            toast.error("Please enter your email first!");
+            return;
+        }
+        try {
+            await resetPassword(email);
+            toast.success("Password reset email sent! Check your inbox.");
+        } catch (error) {
+            toast.error(error.message);
+        }
+    };
+    
+      
     const handleGoogleSignIn = () => {
         signInWithGoogle(googleProvider)
             .then(result => {

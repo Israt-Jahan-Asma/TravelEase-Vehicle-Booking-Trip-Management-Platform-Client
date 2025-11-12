@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { AuthContext } from './AuthContext';
-import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
+import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
 import { auth } from '../firebase/firebase.init';
 import { updateProfile } from 'firebase/auth';
 
@@ -15,6 +15,7 @@ const AuthProvider = ({ children }) => {
         return createUserWithEmailAndPassword(auth, email, password)
     }
     const logOut = () => {
+        setLoading(true)
         return signOut(auth)
     }
 
@@ -24,29 +25,49 @@ const AuthProvider = ({ children }) => {
     }
     const signInWithGoogle = () => {
         setLoading(true)
-        return signInWithPopup(auth, googleProvider)
+        const result= signInWithPopup(auth, googleProvider)
+        const signedInUser = result.user;
+
+        setUser({
+            ...signedInUser,
+            photoURL: signedInUser.photoURL || "https://i.postimg.cc/W3YZkWYg/default-avatar.png",
+        });
+        setLoading(false);
     }
 
     // inside AuthProvider
-    const updateUser = (profile) => {
+    const updateUser = async (profile) => {
         if (!auth.currentUser) return;
-        return updateProfile(auth.currentUser, profile);
+        await updateProfile(auth.currentUser, profile);
+        setUser({...auth.currentUser})
     };
+    const resetPassword = (email) => {
+        setLoading(true);
+        return sendPasswordResetEmail(auth, email);
+      };
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-            setUser(currentUser)
-        })
-        return () => {
-            unsubscribe()
-        }
-    }, [])
+            if (currentUser) {
+                setUser({
+                    ...currentUser,
+                    photoURL: currentUser.photoURL || "https://i.postimg.cc/W3YZkWYg/default-avatar.png",
+                });
+            } else {
+                setUser(null);
+            }
+            setLoading(false);
+        });
+        return unsubscribe;
+    }, []);
+
 
     const authInfo = {
         createUser,
         signInUser,
         logOut,
         signInWithGoogle,
+        resetPassword,
         user,
         setUser,
         updateUser,

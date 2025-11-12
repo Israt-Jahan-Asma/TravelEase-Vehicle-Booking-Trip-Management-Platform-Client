@@ -1,25 +1,47 @@
 import React, { use } from 'react';
-import { NavLink } from 'react-router';
+import { NavLink, useNavigate } from 'react-router';
 import { AuthContext } from '../context/AuthContext';
-const Header = () => {
-    const {user}= use(AuthContext)
-    console.log(user);
-    
+import Swal from 'sweetalert2';
 
-    const links = <>
-        <li><NavLink to='/'> Home</NavLink></li>
-        <li><NavLink to='/all-vehicles'> All Vehicles</NavLink></li>
-        <li><NavLink to='/add-vehicles'> Add Vehicle</NavLink></li>
-        <li><NavLink to='/my-vehicles'> My Vehicles</NavLink></li>
-        <li><NavLink to='/my-bookings'> My Bookings</NavLink></li>
-    </>
+const Header = () => {
+    const { user, logOut } = use(AuthContext);
+    const navigate = useNavigate();
+
+    const handleLogout = async () => {
+        try {
+            await logOut();
+            Swal.fire({
+                icon: "success",
+                title: "Logged out successfully",
+                timer: 1500,
+                showConfirmButton: false,
+            });
+            navigate("/login");
+        } catch (err) {
+            console.error(err);
+            Swal.fire({
+                icon: "error",
+                title: "Logout failed",
+            });
+        }
+    };
+
+    const links = (
+        <>
+            <li><NavLink to='/'>Home</NavLink></li>
+            <li><NavLink to='/all-vehicles'>All Vehicles</NavLink></li>
+            <li><NavLink to='/add-vehicles'>Add Vehicle</NavLink></li>
+            <li><NavLink to='/my-vehicles'>My Vehicles</NavLink></li>
+            <li><NavLink to='/my-bookings'>My Bookings</NavLink></li>
+        </>
+    );
 
     return (
         <div className="bg-secondary text-accent shadow-sm">
             <div className="container-default flex items-center justify-between pr-3 md:pr-0">
 
                 {/* Left: Logo + Mobile Dropdown */}
-                <div className="flex items-center ">
+                <div className="flex items-center">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -41,28 +63,35 @@ const Header = () => {
                     {links}
                 </ul>
 
-                {/* Right: Avatar */}
-                <div className="flex items-center">
-                    <div className="dropdown dropdown-end">
-                        <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-                            <div className="w-10 rounded-full">
-                                <img src={user?.photoURL} alt="User" />
-                            </div>
+                {/* Right: Avatar / Login */}
+                <div className="flex items-center gap-3">
+                    {user ? (
+                        <div className="dropdown dropdown-end">
+                            {/* Avatar button */}
+                            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                                <div className="w-10 rounded-full">
+                                    <img src={user?.photoURL || "https://i.postimg.cc/W3YZkWYg/default-avatar.png"} alt="User" />
+                                </div>
+                            </label>
+
+                            {/* Dropdown menu */}
+                            <ul
+                                tabIndex={0}
+                                className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 mt-2">
+                                <li><a className="justify-between">Profile</a></li>
+                                <li><a>Settings</a></li>
+                                <li><button onClick={handleLogout}>Logout</button></li>
+                            </ul>
                         </div>
-                        <ul
-                            tabIndex="-1"
-                            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow">
-                            <li><a className="justify-between">Profile</a></li>
-                            <li><a>Settings</a></li>
-                            <li><a>Logout</a></li>
-                        </ul>
-                        <NavLink className='btn btn-primary ml-2' to='/login' > Login </NavLink>
-                    </div>
+                      
+                    ) : (
+                        <NavLink className='btn btn-primary ml-2' to='/login'>Login</NavLink>
+                    )}
                 </div>
 
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default Header;
