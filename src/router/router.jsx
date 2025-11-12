@@ -11,6 +11,7 @@ import Register from '../Pages/Register';
 import ViewDetails from '../Pages/ViewDetails';
 import PrivateRoute from '../Components/PrivateRoute';
 import UpdateVehicle from '../Pages/UpdateVehicle';
+import ViewBookings from '../Pages/ViewBookings';
 
 
 const router = createBrowserRouter([
@@ -51,6 +52,13 @@ const router = createBrowserRouter([
           path: 'my-bookings',
           element: <PrivateRoute>
             <MyBookings></MyBookings>
+          </PrivateRoute>
+        },
+        {
+          path: 'my-bookings/:id',
+          loader: ({ params }) => fetch(`http://localhost:3000/my-bookings/${params.id}`),
+          element: <PrivateRoute>
+            <ViewBookings></ViewBookings>
           </PrivateRoute>
         },
         {

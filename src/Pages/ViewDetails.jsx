@@ -13,15 +13,20 @@ const ViewDetails = () => {
     const handleBookNow = async () => {
         const bookingData = {
             vehicleId: vehicle._id,
-            name: vehicle.name,
-            image: vehicle.image,
-            price: vehicle.price,
-            userEmail: user.email, // later replace with user.email
+            vehicleName: vehicle.vehicleName,
+            owner: vehicle.owner,
+            category: vehicle.category,
+            pricePerDay: vehicle.pricePerDay,
+            location: vehicle.location,
+            availability: vehicle.availability,
+            coverImage: vehicle.coverImage,
+            description: vehicle.description,
+            userEmail: user.email,
+            userName: user.displayName ,
             createdAt: new Date(),
         };
-
         try {
-            const res = await axios.post("http://localhost:3000/bookings", bookingData);
+            const res = await axios.post("http://localhost:3000/my-bookings", bookingData);
 
             if (res.data.insertedId) {
                 Swal.fire({
@@ -29,6 +34,7 @@ const ViewDetails = () => {
                     icon: "success",
                     draggable: true
                   });
+               
                 
             } else {
                 Swal.fire({

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-const MyVehicels = ({ vehicles }) => {
+const MyVehiceslsCom = ({ vehicles }) => {
     const { _id, vehicleName, owner, category, pricePerDay, location, availability, coverImage, userEmail, description } = vehicles
     return (
         <div className="card bg-base-100 w-full shadow-sm">
@@ -29,4 +29,4 @@ const MyVehicels = ({ vehicles }) => {
 };
 
 
-export default MyVehicels;
+export default MyVehiceslsCom;

@@ -1,7 +1,7 @@
 import React, { use, useEffect, useState } from 'react';
 import { AuthContext } from '../context/AuthContext';
-import Vehicles from '../Components/Vehicles';
-import MyVehicels from '../Components/MyVehicels';
+// import Vehicles from '../Components/Vehicles';
+import MyVehiclesCom from '../Components/MyVehicelsCom';
 
 const MyVehicles = () => {
     const {user, loading, setLoading}= use(AuthContext)
@@ -32,7 +32,7 @@ const MyVehicles = () => {
             <h2 className='text-center'>My Vehicles</h2>
             <div className='grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 '>
                 {
-                    vehicles.map(vehicles => <MyVehicels key={vehicles._id} vehicles={vehicles}></MyVehicels>)
+                    vehicles.map(vehicles => <MyVehiclesCom key={vehicles._id} vehicles={vehicles}></MyVehiclesCom>)
                 }
             </div>
         </div>
