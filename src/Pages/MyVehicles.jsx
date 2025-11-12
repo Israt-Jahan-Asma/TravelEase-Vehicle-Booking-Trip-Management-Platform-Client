@@ -1,9 +1,40 @@
-import React from 'react';
+import React, { use, useEffect, useState } from 'react';
+import { AuthContext } from '../context/AuthContext';
+import Vehicles from '../Components/Vehicles';
+import MyVehicels from '../Components/MyVehicels';
 
 const MyVehicles = () => {
+    const {user, loading, setLoading}= use(AuthContext)
+    const [vehicles, setVehicles] = useState([])
+
+    useEffect (()=>{
+        fetch(`http://localhost:3000/my-vehicles?email=${user.email}`)
+        .then(res=>res.json())
+        .then(data=>{
+            setVehicles(data)
+            setLoading(false)
+        })
+    },[])
+
+    if(loading){
+        return <div className="flex justify-center items-center min-h-screen">
+            <TailSpin
+                height={80}
+                width={80}
+                color="#4F46E5"
+                ariaLabel="loading"
+            />
+        </div>
+    }
+
     return (
-        <div>
-            My Vehicles
+        <div className = 'container-default space-y-8 py-8'>
+            <h2 className='text-center'>My Vehicles</h2>
+            <div className='grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 '>
+                {
+                    vehicles.map(vehicles => <MyVehicels key={vehicles._id} vehicles={vehicles}></MyVehicels>)
+                }
+            </div>
         </div>
     );
 };

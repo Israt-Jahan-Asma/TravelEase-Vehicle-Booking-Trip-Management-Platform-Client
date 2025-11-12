@@ -10,6 +10,7 @@ import Login from '../Pages/Login';
 import Register from '../Pages/Register';
 import ViewDetails from '../Pages/ViewDetails';
 import PrivateRoute from '../Components/PrivateRoute';
+import UpdateVehicle from '../Pages/UpdateVehicle';
 
 
 const router = createBrowserRouter([
@@ -34,12 +35,23 @@ const router = createBrowserRouter([
           </PrivateRoute>
         },
         {
+          path: 'vehiclesDetails/:id',
+          loader: ({ params }) => fetch(`http://localhost:3000/all-vehicles/${params.id}`),
+          element: <PrivateRoute>
+            <ViewDetails></ViewDetails>
+          </PrivateRoute>
+        },
+        {
           path: 'my-vehicles',
-          Component: MyVehicles
+          element: <PrivateRoute>
+            <MyVehicles></MyVehicles>
+          </PrivateRoute>
         },
         {
           path: 'my-bookings',
-          Component: MyBookings
+          element: <PrivateRoute>
+            <MyBookings></MyBookings>
+          </PrivateRoute>
         },
         {
           path: 'login',
@@ -50,12 +62,12 @@ const router = createBrowserRouter([
           Component: Register
         },
         {
-          path: 'vehiclesDetails/:id',
-          loader: ({ params }) => fetch(`http://localhost:3000/all-vehicles/${params.id}`),
-          element: <PrivateRoute>
-            <ViewDetails></ViewDetails>
+          path: 'update-vehicle/:id',
+          element: <PrivateRoute> 
+            <UpdateVehicle></UpdateVehicle>
           </PrivateRoute>
         }
+        
       ]
     },
   ]);
