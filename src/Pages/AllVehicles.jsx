@@ -4,7 +4,6 @@ import { useLoaderData } from 'react-router';
 
 const AllVehicles = () => {
     const vehicles = useLoaderData();
-    console.log(vehicles);
     
     return (
         <div className='container-default space-y-8 py-8'>

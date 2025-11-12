@@ -14,7 +14,7 @@ const AddVehicle = () => {
 
     const newVehicle = {
         vehicleName: form.vehicleName.value,
-        ownerName: form.ownerName.value,
+        owner: form.owner.value,
         category: form.category.value,
         pricePerDay: form.pricePerDay.value,
         location: form.location.value,
@@ -26,7 +26,8 @@ const AddVehicle = () => {
         
         };
 
-
+        console.log(newVehicle)
+        console.log(user?.email)
         try {
             const res = await axios.post("http://localhost:3000/all-vehicles", newVehicle);
             if (res.data.insertedId) {
@@ -51,7 +52,7 @@ const AddVehicle = () => {
 
                 <form onSubmit={handleAddVehicle} className="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <input type="text" name="vehicleName" placeholder="Vehicle Name" className="input input-bordered w-full" required />
-                    <input type="text" name="ownerName" placeholder="Owner Name" className="input input-bordered w-full" required />
+                    <input type="text" name="owner" placeholder="Owner" className="input input-bordered w-full" required />
                     <input type="text" name="category" placeholder="Category (Car, SUV, Bike...)" className="input input-bordered w-full" required />
                     <input type="number" name="pricePerDay" placeholder="Price Per Day ($)" className="input input-bordered w-full" required />
                     <input type="text" name="location" placeholder="Location" className="input input-bordered w-full" required />

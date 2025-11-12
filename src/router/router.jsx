@@ -9,6 +9,7 @@ import MyBookings from '../Pages/MyBookings';
 import Login from '../Pages/Login';
 import Register from '../Pages/Register';
 import ViewDetails from '../Pages/ViewDetails';
+import PrivateRoute from '../Components/PrivateRoute';
 
 
 const router = createBrowserRouter([
@@ -28,7 +29,9 @@ const router = createBrowserRouter([
        
         {
           path: 'add-vehicles',
-          Component: AddVehicle
+          element: <PrivateRoute>
+            <AddVehicle></AddVehicle>
+          </PrivateRoute>
         },
         {
           path: 'my-vehicles',
@@ -49,7 +52,9 @@ const router = createBrowserRouter([
         {
           path: 'vehiclesDetails/:id',
           loader: ({ params }) => fetch(`http://localhost:3000/all-vehicles/${params.id}`),
-          Component: ViewDetails
+          element: <PrivateRoute>
+            <ViewDetails></ViewDetails>
+          </PrivateRoute>
         }
       ]
     },
