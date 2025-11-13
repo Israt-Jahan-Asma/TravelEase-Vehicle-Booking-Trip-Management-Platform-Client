@@ -5,6 +5,7 @@ import axios from 'axios';
 import Spinner from './Spinner';
 import { use, useEffect, useState } from 'react';
 import { format } from 'date-fns';
+import TopCategories from './TopCategories';
 
 const LatestVehicles = () => {
     const [latestVehicles, setLatestVehicles] = useState([]);
@@ -41,6 +42,7 @@ const LatestVehicles = () => {
                         refreshVehicles={fetchLatestVehicles}
                     />
                 ))}
+                
             </div>
         </div>
     );

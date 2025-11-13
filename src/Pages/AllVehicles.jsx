@@ -2,6 +2,7 @@ import React from 'react';
 import Vehicles from '../Components/Vehicles';
 import { useLoaderData } from 'react-router';
 import { motion } from "framer-motion";
+import TopCategories from '../Components/TopCategories';
 
 const AllVehicles = () => {
     const vehicles = useLoaderData();
@@ -14,6 +15,9 @@ const AllVehicles = () => {
                     vehicles.map(vehicles => <Vehicles key={vehicles._id} vehicles={vehicles}></Vehicles>)
                 }
             </div>
+            
+                
+            
         </div>
     );
 };
