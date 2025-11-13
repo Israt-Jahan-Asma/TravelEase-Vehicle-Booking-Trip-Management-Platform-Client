@@ -38,7 +38,7 @@
 
   /* Containers */
   .container-default {
-    @apply w-full p-4 max-w-[1440px] mx-auto ;
+    @apply w-full py-4 xl:px-0 px-4 max-w-[1440px] mx-auto ;
   }
 
   .container-full {

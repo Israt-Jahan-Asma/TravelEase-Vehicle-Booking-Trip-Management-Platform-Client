@@ -3,8 +3,10 @@ import {
     Facebook,
     Twitter,
     Instagram,
-    Mail
+    Mail,
+   
 } from 'lucide-react';
+import { FaXTwitter } from "react-icons/fa6";
 
 
 
@@ -54,7 +56,7 @@ const Footer = () => {
                             <Facebook size={24} />
                         </a>
                         <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-primary dark:text-gray-200 hover:text-accent">
-                            <Twitter size={24} />
+                            <FaXTwitter size={24} />
                         </a>
                         <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-primary dark:text-gray-200 hover:text-accent">
                             <Instagram size={24} />

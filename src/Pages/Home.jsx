@@ -1,12 +1,12 @@
 import React from 'react';
 import { Outlet } from 'react-router';
 import LatestVehicles from '../Components/LatestVehicles';
-
+import Banner from '../Components/Banner'
 
 const Home = () => {
     return (
         <div>
-           h2 banner will be here
+          <Banner></Banner>
           
             <LatestVehicles ></LatestVehicles>
             

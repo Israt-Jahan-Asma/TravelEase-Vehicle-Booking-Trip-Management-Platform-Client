@@ -38,7 +38,7 @@ const Header = () => {
 
     return (
         <div className="bg-secondary text-accent shadow-sm">
-            <div className="container-default flex items-center justify-between pr-3 md:pr-0">
+            <div className="container-default flex items-center justify-between pr-3 xl:pr-0">
 
                 {/* Left: Logo + Mobile Dropdown */}
                 <div className="flex items-center">
@@ -78,14 +78,17 @@ const Header = () => {
                             <ul
                                 tabIndex={0}
                                 className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 mt-2">
-                                <li><a className="justify-between">Profile</a></li>
-                                <li><a>Settings</a></li>
+                                <li><a className="justify-between">{user?.displayName || "User"}</a></li>
+                                
                                 <li><button onClick={handleLogout}>Logout</button></li>
                             </ul>
                         </div>
-                      
+
                     ) : (
-                        <NavLink className='btn btn-primary ml-2' to='/login'>Login</NavLink>
+                        <>
+                            <NavLink className='btn btn-primary ml-2' to='/login'>Login</NavLink>
+                            <NavLink className='btn btn-primary ml-2' to='/register'>Register</NavLink>
+                        </>
                     )}
                 </div>
 

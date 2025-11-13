@@ -26,7 +26,7 @@ const MyBookings = () => {
     return (
         <div className='container-default space-y-8 py-8'>
             <h2 className='text-center'>My Bookings</h2>
-            <div className='grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 '>
+            <div className='grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3'>
                 {
                     bookings.map(booking => <MyBookingsCom key={bookings._id} booking={booking}> </MyBookingsCom> )
                     
