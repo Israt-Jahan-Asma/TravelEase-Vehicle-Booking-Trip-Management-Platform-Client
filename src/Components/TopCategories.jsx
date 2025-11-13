@@ -9,9 +9,10 @@ const categories = [
 
 const TopCategories = () => {
     return (
-        <section className="py-12 bg-gray-50 mt-10">
-            <div className="container mx-auto px-4 text-center">
-                <h2 className="text-3xl font-bold text-gray-800 mb-10">Top Categories</h2>
+        <section className="py-16 bg-gray-50 mt-10">
+            <div className="container-default mx-auto px-2 text-center">
+                <h2 className="text-center text-2xl font-semibold mb-8">Top Categories</h2>
+
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                     {categories.map((cat) => (
                         <div
@@ -25,7 +26,7 @@ const TopCategories = () => {
                                     className="h-full w-full object-cover rounded-lg"
                                 />
                             </div>
-                            <h3 className="text-lg font-semibold text-gray-700">{cat.title}</h3>
+                            <h3 className="text-lg font-semibold ">{cat.title}</h3>
                         </div>
                     ))}
                 </div>

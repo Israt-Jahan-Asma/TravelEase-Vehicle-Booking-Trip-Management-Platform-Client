@@ -46,7 +46,7 @@ const UpdateVehicle = () => {
     return (
         <div className="min-h-screen flex justify-center items-center py-10">
             <div className="card w-full max-w-2xl shadow-xl bg-base-100 p-8"> 
-            <h2 className="text-2xl font-semibold text-center text-secondary mb-6">
+            <h2 className="text-2xl font-bold text-center text-secondary mb-6">
             UpdateVehicle
             </h2>
             <div>

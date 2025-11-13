@@ -71,9 +71,9 @@ const Register = () => {
     }
 
     return (
-        <div className='px-4 '>
-            <div className="card-body space-y-5 flex flex-1 py-10 w-full max-w-md shrink-0 shadow-2xl rounded-xl mx-auto my-10 ">
-                <h2 className=' text-accent text-center'>Register Your Account</h2>
+        <div className="min-h-screen flex justify-center items-center py-10">
+            <div className="card shadow-xl bg-base-100 p-8">
+                <h2 className=' text-center text-2xl font-bold '>Register Your Account</h2>
                 <form className='w-80 mx-auto ' onSubmit={handleRegister}>
 
                     <fieldset className="fieldset relative">

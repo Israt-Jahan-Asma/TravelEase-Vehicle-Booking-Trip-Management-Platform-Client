@@ -29,7 +29,7 @@ const MyVehicles = () => {
 
     return (
         <div className = 'container-default space-y-8 py-8'>
-            <h2 className='text-center'>My Vehicles</h2>
+            <h2 className='text-center text-2xl font-bold '>My Vehicles</h2>
             <div className='grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 '>
                 {
                     vehicles.map(vehicles => <MyVehiclesCom key={vehicles._id} vehicles={vehicles}></MyVehiclesCom>)
