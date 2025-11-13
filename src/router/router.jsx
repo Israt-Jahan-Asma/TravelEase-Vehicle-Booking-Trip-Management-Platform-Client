@@ -12,6 +12,7 @@ import ViewDetails from '../Pages/ViewDetails';
 import PrivateRoute from '../Components/PrivateRoute';
 import UpdateVehicle from '../Pages/UpdateVehicle';
 import ViewBookings from '../Pages/ViewBookings';
+import Error from '../Pages/Error';
 
 
 const router = createBrowserRouter([
@@ -75,6 +76,10 @@ const router = createBrowserRouter([
           element: <PrivateRoute> 
             <UpdateVehicle></UpdateVehicle>
           </PrivateRoute>
+        },
+        {
+          path: '*',
+          element: <Error></Error>
         }
         
       ]
