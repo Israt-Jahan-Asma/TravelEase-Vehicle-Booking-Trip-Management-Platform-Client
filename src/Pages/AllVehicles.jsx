@@ -68,7 +68,14 @@ const AllVehicles = () => {
 
     return (
         <div className='container-default space-y-8 py-8  text-base-content'>
-            <h2 className='text-center text-3xl font-bold'>All Vehicles</h2>
+            <div className="max-w-xl mb-12 text-center">
+            <h4 className="text-primary text-center font-semibold uppercase">
+                All New Models
+            </h4>
+            <h2 className="text-4xl md:text-5xl font-extrabold text-base-content my-3 text-center">
+                All Vehicles
+            </h2>
+            </div>
 
             {/* Filtering and Sorting Controls */}
             <div className="flex flex-wrap justify-center md:justify-start gap-4 p-4 ">

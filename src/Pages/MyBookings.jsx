@@ -25,7 +25,13 @@ const MyBookings = () => {
 
     return (
         <div className='container-default space-y-8 py-8'>
-            <h2 className='text-center text-2xl font-bold '>My Bookings</h2>
+
+            <h4 className="text-primary text-center font-semibold uppercase">
+                Your Bookings
+            </h4>
+            <h2 className="text-4xl md:text-5xl font-extrabold text-base-content my-3 text-center">My Bookings
+            </h2>
+           
             <div className='grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3'>
                 {
                     bookings.map(booking => <MyBookingsCom key={bookings._id} booking={booking}> </MyBookingsCom> )
