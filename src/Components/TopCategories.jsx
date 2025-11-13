@@ -10,7 +10,7 @@ const categories = [
 const TopCategories = () => {
     return (
         <section className="py-16 bg-gray-50 mt-10">
-            <div className="container-default mx-auto px-2 text-center">
+            <div className="container mx-auto px-2 text-center">
                 <h2 className="text-center text-2xl font-semibold mb-8">Top Categories</h2>
 
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6">

@@ -2,7 +2,8 @@ import React from "react";
 
 const FeaturedOwner = () => {
     return (
-        <section className=" bg-white">
+       
+        <section className="bg-base-100 text-base-content">
             <div className="container-default py-16 mx-auto md:flex md:items-center md:gap-10">
                 <div className="md:w-1/2 mb-10 md:mb-0">
                     <img
@@ -13,13 +14,16 @@ const FeaturedOwner = () => {
                 </div>
 
                 <div className="md:w-1/2 text-center md:text-left">
-                    <h2 className=" text-center text-2xl font-bold mb-4">Featured Owners</h2>
-                    <p className=" mb-6">
+                    {/* Heading now inherits text-base-content */}
+                    <h2 className="text-center text-2xl font-bold mb-4">Featured Owners</h2>
+                    <p className="mb-6">
                         Meet <span className="font-semibold text-accent">Israt & Alex</span>, one of our top-rated hosts
+                       
                         with 200+ successful rentals and 5-star reviews. Alex’s dedication to quality and customer
                         satisfaction has made him one of the most trusted vehicle owners on TravelEase.
                     </p>
-                    <button className="px-6 py-3 btn btn-primary rounded-lg font-medium hover:bg-primary/90 transition-colors">
+                    
+                    <button className="btn btn-primary">
                         View Owner Profile
                     </button>
                 </div>

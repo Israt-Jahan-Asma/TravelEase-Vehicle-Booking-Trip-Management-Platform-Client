@@ -1,11 +1,20 @@
-import React, { use } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router';
 import { AuthContext } from '../context/AuthContext';
 import Swal from 'sweetalert2';
 
 const Header = () => {
+   
     const { user, logOut } = use(AuthContext);
     const navigate = useNavigate();
+    const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+
+    useEffect(() => {
+        const html = document.querySelector("html");
+        html.setAttribute("data-theme", theme);
+        localStorage.setItem("theme", theme);
+    }, [theme]);
+
 
     const handleLogout = async () => {
         try {
@@ -26,6 +35,10 @@ const Header = () => {
         }
     };
 
+    const handleTheme = (checked) => {
+        setTheme(checked ? "dark" : "light");
+    };
+
     const links = (
         <>
             <li><NavLink to='/'>Home</NavLink></li>
@@ -37,7 +50,8 @@ const Header = () => {
     );
 
     return (
-        <div className="bg-secondary text-accent shadow-sm">
+       
+        < div className = "bg-base-200 text-base-content shadow-md" >
             <div className="container-default flex items-center justify-between pr-3 xl:pr-0">
 
                 {/* Left: Logo + Mobile Dropdown */}
@@ -48,25 +62,34 @@ const Header = () => {
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />
                             </svg>
                         </div>
+                       
                         <ul
                             tabIndex="-1"
-                            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow">
+                            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow text-base-content">
                             {links}
                         </ul>
                     </div>
 
-                    <img className="w-20" src="https://i.postimg.cc/W3YZkWYg/travelease-logo.png" alt="Logo" />
+                    <img className="w-50" src="https://i.postimg.cc/sfHWM3b5/Gemini-Generated-Image-uvqzqluvqzqluvqz-1-1.png" alt="Logo" />
                 </div>
 
                 {/* Center: Menu */}
-                <ul className="hidden lg:flex menu menu-horizontal px-1 mx-auto ">
+                <ul className="hidden lg:flex menu menu-horizontal px-1 mx-auto text-base-content">
                     {links}
                 </ul>
 
                 {/* Right: Avatar / Login */}
                 <div className="flex items-center gap-3">
+                    <input
+                        onChange={(e) => handleTheme(e.target.checked)}
+                        type="checkbox"
+                        defaultChecked={localStorage.getItem('theme') === "dark"}
+                        className="toggle toggle-sm"
+                    />
+
                     {user ? (
                         <div className="dropdown dropdown-end">
+
                             {/* Avatar button */}
                             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                                 <div className="w-10 rounded-full">
@@ -74,12 +97,11 @@ const Header = () => {
                                 </div>
                             </label>
 
-                            {/* Dropdown menu */}
+                           
                             <ul
                                 tabIndex={0}
-                                className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 mt-2">
+                                className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 mt-2 text-base-content">
                                 <li><a className="justify-between">{user?.displayName || "User"}</a></li>
-                                
                                 <li><button onClick={handleLogout}>Logout</button></li>
                             </ul>
                         </div>
@@ -90,10 +112,12 @@ const Header = () => {
                             <NavLink className='btn btn-primary ml-2' to='/register'>Register</NavLink>
                         </>
                     )}
+
+
                 </div>
 
             </div>
-        </div>
+        </div >
     );
 };
 

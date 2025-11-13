@@ -1,10 +1,8 @@
-
-
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import { Link } from 'react-router';
+import { Link } from 'react-router'; 
 
 const images = [
     'https://images.unsplash.com/photo-1674110997072-41f11b7d4ae7?ixlib=rb-…',
@@ -14,6 +12,7 @@ const images = [
 ];
 
 const Banner = () => {
+    // Note: handleScroll is defined but not used. Keeping it for completeness.
     const handleScroll = () => {
         const section = document.getElementById("book-section");
         if (section) {
@@ -40,6 +39,7 @@ const Banner = () => {
                                 className="w-full h-full object-cover"
                             />
 
+                            {/* Black overlay is good for contrast in both themes */}
                             <div className="absolute inset-0 bg-black/50"></div>
 
                             {/* Centered Text & Button */}
@@ -50,8 +50,8 @@ const Banner = () => {
                                 <p className="mt-3 text-sm md:text-lg opacity-90">
                                     Experience luxury, comfort, and nature — all in one place.
                                 </p>
-                                <Link to='/all-vehicles' 
-                                    
+                                {/* This button uses the fixed custom class 'btn-primary' from the CSS */}
+                                <Link to='/all-vehicles'
                                     className="mt-6 btn btn-primary"
                                 >
                                     All Vehicles

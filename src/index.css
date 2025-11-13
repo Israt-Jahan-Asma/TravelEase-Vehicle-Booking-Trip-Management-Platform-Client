@@ -3,42 +3,62 @@
 @plugin "daisyui";
 
 @plugin "daisyui" {
-
-  themes: light --default;
+  themes: light --default, dark --prefersdark;
 }
-/* DaisyUI theme */
+
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+/* DaisyUI theme - LIGHT (New Palette) */
 @plugin "daisyui/theme" {
   name: "light";
   default: true;
-  --color-base: #F7F5F2;
-  --color-accent: #bfa37c;
-  --color-primary: #ffffff;
-  --color-secondary: #0C1315;
-}
-/* .btn {
-  @apply inline-block rounded-full font-semibold transition-colors duration-300 ease-in-out px-4 py-2 text-sm sm:px-5 sm:py-2.5 sm:text-base md:px-6 md:py-3 md:text-lg;
-} */
-
-.btn-primary {
-  @apply bg-[#bfa37c] text-[#0C1315] hover:bg-[#a88c68] rounded-full font-semibold border-0 shadow-none;
-}
-.btn-primary:hover {
-  @apply bg-[#a88c68];
-}
-
-.btn-secondary {
-  @apply bg-[#0C1315] text-[#ffffff] hover:bg-[#1b2325] rounded-full font-semibold border-0 shadow-none;;
-}
-.btn-secondary:hover {
-  @apply bg-[#1b2325];
+  --color-base-100: #f9fafb;
+  /* Main background: Very Light Gray */
+  --color-base-content: #1f2937;
+  /* Main text color: Dark Slate Gray */
+  --color-primary: #10b981;
+  /* Accent: Emerald Teal */
+  --color-primary-content: #ffffff;
+  /* Text on Accent: White */
+  --color-secondary: #064e3b;
+  /* Dark Secondary: Darker Teal */
+  --color-secondary-content: #ffffff;
+  --color-accent: #10b981;
+  /* Accent */
 }
 
-/* Custom reusable components */
+/* DaisyUI theme - DARK (New Palette) */
+@plugin "daisyui/theme" {
+  name: "dark";
+
+  /* Base Backgrounds and Text */
+  --color-base-100: #1f2937;
+  /* Main dark background: Dark Slate Gray */
+  --color-base-200: #374151;
+  /* Lighter element/card background */
+  --color-base-300: #4b5563;
+  /* Border/hover background */
+  --color-base-content: #f9fafb;
+  /* Light text color: Very Light Gray */
+
+  /* Primary/Accent Colors */
+  --color-primary: #10b981;
+  --color-primary-content: #ffffff;
+  /* Text on primary button */
+  --color-secondary: #16a34a;
+  /* Secondary color */
+  --color-secondary-content: #ffffff;
+  /* Text on secondary color */
+  --color-accent: #10b981;
+  --color-accent-content: #ffffff;
+}
+
+/* Custom reusable components - UPDATED COLORS */
 @layer components {
 
   /* Containers */
   .container-default {
-    @apply w-full py-4 xl:px-0 px-4 max-w-[1440px] mx-auto ;
+    @apply w-full py-4 xl:px-0 px-4 max-w-[1440px] mx-auto;
   }
 
   .container-full {
@@ -50,14 +70,34 @@
   }
 
   /* Buttons */
-  
+
+  .btn-primary {
+    /* Mapped to new colors */
+    @apply bg-[#10b981] text-[#ffffff] hover:bg-[#064e3b] rounded-full font-semibold border-0 shadow-none;
+  }
+
+  .btn-primary:hover {
+    @apply bg-[#064e3b];
+  }
+
+  .btn-secondary {
+    /* Mapped to new colors */
+    @apply bg-[#1f2937] text-[#ffffff] hover:bg-[#374151] rounded-full font-semibold border-0 shadow-none;
+    ;
+  }
+
+  .btn-secondary:hover {
+    @apply bg-[#374151];
+  }
 
   .btn-outline {
-    @apply border border-[#bfa37c] text-[#bfa37c] hover:bg-[#bfa37c] hover:text-[#0C1315];
+    /* Mapped to new colors */
+    @apply border border-[#10b981] text-[#10b981] hover:bg-[#10b981] hover:text-[#ffffff];
   }
 
   .btn-light {
-    @apply bg-[#ffffff] text-[#0C1315] hover:bg-[#F7F5F2];
+    /* Mapped to new colors */
+    @apply bg-[#ffffff] text-[#1f2937] hover:bg-[#f9fafb];
   }
 
   .btn-disabled {
