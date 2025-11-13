@@ -4,7 +4,6 @@ import { AuthContext } from '../context/AuthContext';
 import Swal from 'sweetalert2';
 
 const Header = () => {
-    // Assuming use(AuthContext) works in your environment. Use useContext(AuthContext) if not.
     const { user, logOut } = use(AuthContext);
     const navigate = useNavigate();
     const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
