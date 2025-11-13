@@ -1,12 +1,13 @@
 import axios from 'axios';
 import React, { use } from 'react';
-import { useLoaderData } from 'react-router';
+import { useLoaderData, useNavigate } from 'react-router';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../context/AuthContext';
 
 const UpdateVehicle = () => {
     const vehicle = useLoaderData()
     const {loading, setLoading} = use(AuthContext)
+    const navigate = useNavigate()
     const handleUpdate = async (e) => {
         e.preventDefault()
         setLoading(true);
@@ -30,7 +31,7 @@ const UpdateVehicle = () => {
             const res = await axios.put(`http://localhost:3000/all-vehicles/${vehicle._id}`, updateVehicle);
             if (res.data.result.modifiedCount) {
                 toast.success("✅ Vehicle added successfully!");
-                
+                navigate('/all-vehicles')
                 
                 
             }

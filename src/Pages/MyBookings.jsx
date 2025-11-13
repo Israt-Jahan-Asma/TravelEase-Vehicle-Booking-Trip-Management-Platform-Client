@@ -1,5 +1,6 @@
 import React, { use, useEffect, useState } from 'react';
 import MyVehicelsCom from '../Components/MyVehicelsCom';
+import Spinner from '../Components/Spinner';
 import { AuthContext } from '../context/AuthContext';
 import MyBookingsCom from '../Components/MyBookingsCom';
 
@@ -18,14 +19,7 @@ const MyBookings = () => {
         },[])
     
         if(loading){
-            return <div className="flex justify-center items-center min-h-screen">
-                <TailSpin
-                    height={80}
-                    width={80}
-                    color="#4F46E5"
-                    ariaLabel="loading"
-                />
-            </div>
+            return <Spinner></Spinner>
         }
     
 

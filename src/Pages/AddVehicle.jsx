@@ -2,10 +2,12 @@ import React, { use, useContext, useState } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { toast } from 'react-toastify';
 import axios from 'axios';
+import { useNavigate } from 'react-router';
 
 const AddVehicle = () => {
     const { user, loading, setLoading } = use(AuthContext);
-
+    const navigate = useNavigate()
+    
     const handleAddVehicle = async (e) =>{    
     e.preventDefault()
     setLoading(true);
@@ -29,8 +31,9 @@ const AddVehicle = () => {
         try {
             const res = await axios.post("http://localhost:3000/all-vehicles", newVehicle);
             if (res.data.insertedId) {
-                toast.success("✅ Vehicle added successfully!");
+                toast.success("Vehicle added successfully!");
                 form.reset();
+                navigate('/')
             }
         } catch (error) {
             console.error(error);
