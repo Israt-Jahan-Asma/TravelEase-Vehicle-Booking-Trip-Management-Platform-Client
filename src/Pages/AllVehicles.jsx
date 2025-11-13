@@ -1,6 +1,7 @@
 import React from 'react';
 import Vehicles from '../Components/Vehicles';
 import { useLoaderData } from 'react-router';
+import { motion } from "framer-motion";
 
 const AllVehicles = () => {
     const vehicles = useLoaderData();

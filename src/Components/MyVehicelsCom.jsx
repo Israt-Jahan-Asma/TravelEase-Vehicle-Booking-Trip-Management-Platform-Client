@@ -4,6 +4,8 @@ import { Link, useNavigate } from 'react-router';
 import { toast } from 'react-toastify';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../context/AuthContext';
+import { motion } from "framer-motion";
+
 
 const MyVehiceslsCom = ({ vehicles }) => {
     const { _id, vehicleName, owner, category, pricePerDay, location, availability, coverImage, userEmail, description } = vehicles
@@ -36,27 +38,40 @@ const MyVehiceslsCom = ({ vehicles }) => {
         }
       };
     return (
-        <div className="card bg-base-100 w-full shadow-sm">
+        <motion.div
+            whileHover={{ scale: 1.05 }}
+            className="card bg-base-100 w-full shadow-sm"
+        >
             <figure>
-                <img className='h-64 object-cover w-full object-center'
+                <img
+                    className="h-64 object-cover w-full object-center"
                     src={coverImage}
-                    alt={vehicleName} />
+                    alt={vehicleName}
+                />
             </figure>
             <div className="card-body">
                 <h2 className="card-title">{vehicleName}</h2>
-                <p>Price per day: <span className='font-extrabold text-accent'>${pricePerDay}</span></p>
+                <p>
+                    Price per day:{" "}
+                    <span className="font-extrabold text-accent">${pricePerDay}</span>
+                </p>
 
                 <div className="card-actions justify-between items-center mt-3">
-                    <Link to={`/vehiclesDetails/${_id}`} className="btn btn-primary">View Details</Link>
+                    <Link to={`/vehiclesDetails/${_id}`} className="btn btn-primary">
+                        View Details
+                    </Link>
 
-                    <Link to={`/update-vehicle/${_id}`} className="btn btn-secondary">Update Details</Link>
+                    <Link to={`/update-vehicle/${_id}`} className="btn btn-secondary">
+                        Update Details
+                    </Link>
 
-                    <button onClick={handleDelete} className="btn btn-primary"> Delete</button>
-
+                    <button onClick={handleDelete} className="btn btn-primary">
+                        Delete
+                    </button>
                 </div>
-
             </div>
-        </div>
+        </motion.div>
+
     );
 };
 

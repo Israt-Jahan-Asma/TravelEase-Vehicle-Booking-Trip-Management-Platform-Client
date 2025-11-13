@@ -1,11 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router';
+import { motion } from "framer-motion";
 
 const Vehicles = ({vehicles}) => {
 
     const {_id, vehicleName, owner, category, pricePerDay, location, availability, coverImage, userEmail, description } = vehicles
     return (
-        <div className="card bg-base-100 w-full shadow-sm">
+        <motion.div
+            whileHover={{ scale: 1.05 }}  className="card bg-base-100 w-full shadow-sm">
             <figure>
                 <img className='h-64 object-cover w-full object-center'
                     src={coverImage}
@@ -19,7 +21,7 @@ const Vehicles = ({vehicles}) => {
                     <Link to={`/vehiclesDetails/${_id}`} className="btn btn-primary">View Details</Link>
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 };
 
