@@ -26,8 +26,6 @@ const AddVehicle = () => {
         
         };
 
-        console.log(newVehicle)
-        console.log(user?.email)
         try {
             const res = await axios.post("http://localhost:3000/all-vehicles", newVehicle);
             if (res.data.insertedId) {

@@ -17,7 +17,7 @@ const MyVehiceslsCom = ({ vehicles }) => {
                 <div className="card-actions justify-between items-center mt-3">
                     <Link to={`/vehiclesDetails/${_id}`} className="btn btn-primary">View Details</Link>
 
-                    <Link to={`/vehiclesDetails/${_id}`} className="btn btn-secondary">Update Details</Link>
+                    <Link to={`/update-vehicle/${_id}`} className="btn btn-secondary">Update Details</Link>
 
                     <Link to={`/vehiclesDetails/${_id}`} className="btn btn-primary"> Delete</Link>
 

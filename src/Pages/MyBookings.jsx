@@ -7,7 +7,7 @@ const MyBookings = () => {
 
     const { user, loading, setLoading } = use(AuthContext)
     const [bookings, setBookings] = useState([])
-    console.log(bookings);
+
     useEffect (()=>{
             fetch(`http://localhost:3000/my-bookings?email=${user.email}`)
             .then(res=>res.json())
