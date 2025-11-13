@@ -33,7 +33,7 @@ const ViewDetails = () => {
             createdAt: new Date(),
         };
         try {
-            const res = await axios.post("http://localhost:3000/my-bookings", bookingData);
+            const res = await axios.post("https://travel-ease-server-three.vercel.app/my-bookings", bookingData);
 
             if (res.data.insertedId) {
                 Swal.fire({

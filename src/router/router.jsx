@@ -26,7 +26,7 @@ const router = createBrowserRouter([
         },
         {
           path: 'all-vehicles',
-          loader: ()=> fetch('http://localhost:3000/all-vehicles'),
+          loader: ()=> fetch('https://travel-ease-server-three.vercel.app/all-vehicles'),
           Component: AllVehicles
         },
        
@@ -38,7 +38,7 @@ const router = createBrowserRouter([
         },
         {
           path: 'vehiclesDetails/:id',
-          loader: ({ params }) => fetch(`http://localhost:3000/all-vehicles/${params.id}`),
+          loader: ({ params }) => fetch(`https://travel-ease-server-three.vercel.app/all-vehicles/${params.id}`),
           element: <PrivateRoute>
             <ViewDetails></ViewDetails>
           </PrivateRoute>
@@ -57,7 +57,7 @@ const router = createBrowserRouter([
         },
         {
           path: 'my-bookings/:id',
-          loader: ({ params }) => fetch(`http://localhost:3000/my-bookings/${params.id}`),
+          loader: ({ params }) => fetch(`https://travel-ease-server-three.vercel.app/my-bookings/${params.id}`),
           element: <PrivateRoute>
             <ViewBookings></ViewBookings>
           </PrivateRoute>
@@ -72,7 +72,7 @@ const router = createBrowserRouter([
         },
         {
           path: 'update-vehicle/:id',
-          loader: ({ params }) => fetch(`http://localhost:3000/all-vehicles/${params.id}`),
+          loader: ({ params }) => fetch(`https://travel-ease-server-three.vercel.app/all-vehicles/${params.id}`),
           element: <PrivateRoute> 
             <UpdateVehicle></UpdateVehicle>
           </PrivateRoute>

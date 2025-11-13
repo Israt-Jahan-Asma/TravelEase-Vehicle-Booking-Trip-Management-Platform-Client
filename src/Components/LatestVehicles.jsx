@@ -16,7 +16,7 @@ const LatestVehicles = () => {
     const fetchLatestVehicles = async () => {
         setLoading(true);
         try {
-            const res = await axios.get('http://localhost:3000/latest-vehicles');
+            const res = await axios.get('https://travel-ease-server-three.vercel.app/latest-vehicles');
             setLatestVehicles(res.data);
         } catch (error) {
             console.error(error);

@@ -8,7 +8,7 @@ const MyVehicles = () => {
     const [vehicles, setVehicles] = useState([])
 
     useEffect (()=>{
-        fetch(`http://localhost:3000/my-vehicles?email=${user.email}`)
+        fetch(`https://travel-ease-server-three.vercel.app/my-vehicles?email=${user.email}`)
         .then(res=>res.json())
         .then(data=>{
             setVehicles(data)

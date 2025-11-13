@@ -84,7 +84,7 @@ const Login = () => {
                         <input name='password'
                             type={show ? 'text' : 'password'}
                             className="input input-bordered w-full" placeholder="Password" required />
-                        <span onClick={() => setShow(!show)} className='absolute top-[11.2rem] right-3 z-10 cursor-pointer'>
+                        <span onClick={() => setShow(!show)} className='absolute top-[110px] right-3 z-10 cursor-pointer'>
                             {
                                 show ? <LuEye className=' h-4 w-4' /> : <LuEyeClosed className=' h-4 w-4' />
                             } </span>

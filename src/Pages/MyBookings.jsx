@@ -10,7 +10,7 @@ const MyBookings = () => {
     const [bookings, setBookings] = useState([])
 
     useEffect (()=>{
-            fetch(`http://localhost:3000/my-bookings?email=${user.email}`)
+            fetch(`https://travel-ease-server-three.vercel.app/my-bookings?email=${user.email}`)
             .then(res=>res.json())
             .then(data=>{
                 setBookings(data)

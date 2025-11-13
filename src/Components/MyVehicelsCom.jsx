@@ -26,7 +26,7 @@ const MyVehiceslsCom = ({ vehicles }) => {
         if (result.isConfirmed) {
             try {
                 setLoading(true);
-                await axios.delete(`http://localhost:3000/all-vehicles/${_id}`);
+                await axios.delete(`https://travel-ease-server-three.vercel.app/all-vehicles/${_id}`);
                 Swal.fire("Deleted!", "Your file has been deleted.", "success");
                 navigate('/all-vehicles');
             } catch (error) {

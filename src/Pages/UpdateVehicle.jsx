@@ -28,7 +28,7 @@ const UpdateVehicle = () => {
         };
 
         try {
-            const res = await axios.put(`http://localhost:3000/all-vehicles/${vehicle._id}`, updateVehicle);
+            const res = await axios.put(`https://travel-ease-server-three.vercel.app/all-vehicles/${vehicle._id}`, updateVehicle);
             if (res.data.result.modifiedCount) {
                 toast.success("✅ Vehicle added successfully!");
                 navigate('/all-vehicles')

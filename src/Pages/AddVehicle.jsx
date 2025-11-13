@@ -29,7 +29,7 @@ const AddVehicle = () => {
         };
 
         try {
-            const res = await axios.post("http://localhost:3000/all-vehicles", newVehicle);
+            const res = await axios.post("https://travel-ease-server-three.vercel.app/all-vehicles", newVehicle);
             if (res.data.insertedId) {
                 toast.success("Vehicle added successfully!");
                 form.reset();

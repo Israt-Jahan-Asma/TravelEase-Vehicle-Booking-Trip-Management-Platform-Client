@@ -4,7 +4,7 @@ import { AuthContext } from '../context/AuthContext';
 import Swal from 'sweetalert2';
 
 const Header = () => {
-   
+    // Assuming use(AuthContext) works in your environment. Use useContext(AuthContext) if not.
     const { user, logOut } = use(AuthContext);
     const navigate = useNavigate();
     const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
@@ -50,8 +50,7 @@ const Header = () => {
     );
 
     return (
-       
-        < div className = "bg-base-200 text-base-content shadow-md" >
+        <div className="bg-base-200 text-base-content shadow-md">
             <div className="container-default flex items-center justify-between pr-3 xl:pr-0">
 
                 {/* Left: Logo + Mobile Dropdown */}
@@ -62,7 +61,6 @@ const Header = () => {
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />
                             </svg>
                         </div>
-                       
                         <ul
                             tabIndex="-1"
                             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow text-base-content">
@@ -70,7 +68,7 @@ const Header = () => {
                         </ul>
                     </div>
 
-                    <img className="w-50" src="https://i.postimg.cc/sfHWM3b5/Gemini-Generated-Image-uvqzqluvqzqluvqz-1-1.png" alt="Logo" />
+                    <img className="w-50" src="https://i.postimg.cc/sfHWM3b5/Gemini_Generated_Image_uvqzqluvqzqluvqz_1_1.png" alt="Logo" />
                 </div>
 
                 {/* Center: Menu */}
@@ -88,24 +86,24 @@ const Header = () => {
                     />
 
                     {user ? (
-                        <div className="dropdown dropdown-end">
 
-                            {/* Avatar button */}
+                        <div className="dropdown dropdown-end dropdown-hover">
+
+                            {/* Avatar) */}
                             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                                 <div className="w-10 rounded-full">
                                     <img src={user?.photoURL || "https://i.postimg.cc/W3YZkWYg/default-avatar.png"} alt="User" />
                                 </div>
                             </label>
 
-                           
+                            {/* Dropdown Content */}
                             <ul
                                 tabIndex={0}
-                                className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 mt-2 text-base-content">
+                                className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 text-base-content -mt-1">
                                 <li><a className="justify-between">{user?.displayName || "User"}</a></li>
                                 <li><button onClick={handleLogout}>Logout</button></li>
                             </ul>
                         </div>
-
                     ) : (
                         <>
                             <NavLink className='btn btn-primary ml-2' to='/login'>Login</NavLink>
@@ -117,7 +115,7 @@ const Header = () => {
                 </div>
 
             </div>
-        </div >
+        </div>
     );
 };
 
