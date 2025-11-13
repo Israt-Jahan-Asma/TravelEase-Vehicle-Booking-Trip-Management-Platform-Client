@@ -1,4 +1,4 @@
-import { Link } from 'react-router'; 
+import { Link } from 'react-router';
 import {
     Facebook,
     Instagram,
@@ -12,16 +12,16 @@ const Footer = () => {
 
 
     return (
-       
+
         <footer className="bg-base-300 py-8 px-4 text-base-content">
             <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <div>
-                   
+
                     <div className="flex items-center space-x-2">
                         <span className="text-xl font-bold">TravelEase</span>
                     </div>
                     <ul className="space-y-2 mt-4">
-                      
+
                         <li><Link to="/" className="hover:text-primary transition-colors">Home</Link></li>
                         <li><Link to="/" className="hover:text-primary transition-colors">All Vehicles</Link></li>
                         <li><Link to="/" className="hover:text-primary transition-colors">Add Vehicle</Link></li>
@@ -30,7 +30,7 @@ const Footer = () => {
                 </div>
 
                 <div>
-                    
+
                     <h3 className="text-lg font-bold mb-4">Resources</h3>
                     <ul className="space-y-2">
                         <li><Link to="/" className="hover:text-primary transition-colors">My Vehicles Blog</Link></li>
@@ -53,7 +53,7 @@ const Footer = () => {
                 <div>
                     <h3 className="text-lg font-bold mb-4">Connect With Us</h3>
                     <div className="flex space-x-4 mb-4">
-                       
+
                         <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
                             <Facebook size={24} />
                         </a>
@@ -76,9 +76,8 @@ const Footer = () => {
             </div>
 
 
-           
-            <div className="border-t lg:mb-0 md:mb-0 mb-20 border-base-200 mt-8 pt-4 text-center">
-                
+            <div className="border-t lg:mb-0 md:mb-0 mb-0 border-base-200 mt-8 pt-4 text-center">
+
                 <p className="text-sm">
                     TravelEase – Vehicle Booking & Trip Management Platform
                 </p>

@@ -4,9 +4,11 @@ import { AuthContext } from '../context/AuthContext';
 import { LuEye } from "react-icons/lu";
 import { LuEyeClosed } from "react-icons/lu";
 import { FaGoogle } from "react-icons/fa";
-import { GoogleAuthProvider, sendPasswordResetEmail } from 'firebase/auth';
+import { GoogleAuthProvider } from 'firebase/auth'; 
 import { toast } from 'react-toastify';
+
 const Login = () => {
+
     const { signInUser, signInWithGoogle, resetPassword } = use(AuthContext)
     const location = useLocation()
     const navigate = useNavigate()
@@ -14,6 +16,8 @@ const Login = () => {
     const [error, setError] = useState('')
     const [show, setShow] = useState(false)
     const googleProvider = new GoogleAuthProvider()
+
+    // Email/Password Login 
     const handleLogin = (e) => {
         e.preventDefault()
         const form = e.target
@@ -23,7 +27,6 @@ const Login = () => {
 
         signInUser(email, password)
             .then(result => {
-                const user = result.user
                 toast.success('You have login successfully!')
                 navigate(`${location.state ? location.state : '/'}`)
 
@@ -31,10 +34,12 @@ const Login = () => {
             .catch(error => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
-                toast.error(errorCode, errorMessage)
-                setError(errorCode, errorMessage)
+                toast.error(errorMessage)
+                setError(errorMessage)
             })
     }
+
+    // Forget Password 
     const handleForget = async (e) => {
         e.preventDefault();
         if (!email) {
@@ -48,62 +53,61 @@ const Login = () => {
             toast.error(error.message);
         }
     };
-    
-      
+
     const handleGoogleSignIn = () => {
+        
         signInWithGoogle(googleProvider)
-            .then(result => {
-
+            .then(() => {
+                
                 toast.success('You have login successfully!')
+               
                 navigate(`${location.state ? location.state : '/'}`)
-
             })
             .catch(error => {
-
+               
                 toast.error(error.message)
-
+                setError(error.message)
             })
     }
     return (
         <div className="min-h-screen flex justify-center items-center py-10">
-            <div className="card shadow-xl bg-base-100 p-8">
-                <h2 className=' text-center text-2xl font-bold '>Login Your Account</h2>
+            <div className="card shadow-xl bg-base-100 p-8 text-base-content">
+                <h2 className='text-center text-2xl font-bold'>Login Your Account</h2>
                 <form className='w-80 mx-auto' onSubmit={handleLogin}>
 
                     <fieldset className="fieldset relative">
 
                         <label className="label">Email</label>
-                        <input onChange={e => { setEmail(e.target.value) }} value={email} name='email' type="email" className="input" placeholder="Email" required />
+                        <input onChange={e => { setEmail(e.target.value) }} value={email} name='email' type="email" className="input input-bordered w-full" placeholder="Email" required />
 
-                        <label className="label ">Password</label>
+                        <label className="label">Password</label>
                         <input name='password'
                             type={show ? 'text' : 'password'}
-
-                            className="input " placeholder="Password" required />
-                        <span onClick={() => setShow(!show)} className='absolute  top-28 right-3 z-10 '>
+                            className="input input-bordered w-full" placeholder="Password" required />
+                        <span onClick={() => setShow(!show)} className='absolute top-[11.2rem] right-3 z-10 cursor-pointer'>
                             {
                                 show ? <LuEye className=' h-4 w-4' /> : <LuEyeClosed className=' h-4 w-4' />
                             } </span>
 
                         {
-                            error && <p className='text-secondary'> {error}</p>
+                            error && <p className='text-error mt-2'> {error}</p> // Use semantic error color
                         }
 
-                        <button onClick={handleForget} className='text-accent text-left underline cursor-pointer'>Forget Password? Click Here</button>
+                        <button onClick={handleForget} className='text-accent text-left underline cursor-pointer mt-2'>Forget Password? Click Here</button>
 
 
-                        <button type='submit' className="btn btn-secondary mt-4">Login</button>
+                        <button type='submit' className="btn btn-secondary mt-4 w-full">Login</button>
                         {/* divider */}
                         <div className='flex items-center justify-center gap-2 my-3'>
-                            <div className='h-px w-20 bg-secondary '></div>
+                            <div className='h-px w-20 bg-base-300'></div>
                             <span>or</span>
-                            <div className='h-px w-20 bg-secondary '></div>
+                            <div className='h-px w-20 bg-base-300'></div>
                         </div>
                         {/* google login code  */}
-                        <button className='btn btn-primary flex items-center justify-center gap-3 cursor-pointer'
+                        <button className='btn btn-primary flex items-center justify-center gap-3 cursor-pointer w-full'
                             type='button'
                             onClick={handleGoogleSignIn}>
-                            <FaGoogle className='w-5 h-5 text-secondary' />
+                            <FaGoogle className='w-5 h-5 text-base-content' />
                             Continue with Google
                         </button>
 
