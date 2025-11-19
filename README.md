@@ -39,3 +39,61 @@
   * **Firebase:** Authentication services for user sign-in/sign-up.
   * **Netlify:** Hosting and continuous deployment for the client application.
   * **Vercel:** Hosting for the server/API.
+
+## 📦 Dependencies
+
+### Frontend & Core:
+
+  * React
+  * React Router DOM
+  * Tailwind CSS
+  * DaisyUI
+
+### Authentication & API:
+
+  * Firebase (Auth)
+  * Axios
+
+### Styling & UI Enhancements:
+
+  * Google Fonts (Epilogue, Sora)
+  * Tailwind Plugins
+
+## 🚀 Front-End Installation Guide
+
+### Requirements
+
+ * Node.js >= 18.x
+ * npm >= 9.x
+ * Git
+
+### Clone the repository
+
+ * git clone https://github.com/your-username/your-repo-name.git
+
+### Navigate to the project folder
+
+ * cd your-repo-name
+
+### Install dependencies
+
+ * npm install
+
+### Set up environment variables (if any)
+
+ * Create a .env file in the root folder
+
+ * Add required variables (API URLs, keys, etc.)
+Example:
+
+ * VITE_API_URL=https://api.example.com
+
+
+### Run the development server
+
+ * npm run dev
+
+
+### Open in your browser
+
+ * Access the app at: http://localhost:5173 (or as shown in terminal)
