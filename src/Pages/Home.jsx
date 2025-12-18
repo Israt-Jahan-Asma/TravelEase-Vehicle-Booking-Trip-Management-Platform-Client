@@ -1,19 +1,18 @@
 import React from 'react';
-import { Outlet } from 'react-router';
 import LatestVehicles from '../Components/LatestVehicles';
-import Banner from '../Components/Banner'
-import TopCategories from '../Components/TopCategories';
+import Banner from '../Components/Banner';
 import FeaturedOwner from '../Components/FeaturedOwner';
+import TopCategories from '../Components/TopCategories';
+
 
 const Home = () => {
     return (
         <div>
-          <Banner></Banner>
-          
+   <Banner></Banner>
             <LatestVehicles ></LatestVehicles>
-            
             <TopCategories></TopCategories>
             <FeaturedOwner></FeaturedOwner>
+
         </div>
     );
 };
