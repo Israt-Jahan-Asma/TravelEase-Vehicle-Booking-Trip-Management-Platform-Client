@@ -30,32 +30,38 @@ const LatestVehicles = () => {
     if (loading) return <Spinner />;
 
     return (
-        <div className='container-default space-y-10 '>
+        <section className="bg-base-200">
+            <div className="container-default py-0">
 
+                <div className="py-16">
+                    <div className="max-w-xl mb-12 text-left">
+                        <h4 className="text-primary text-lg font-semibold uppercase">
+                            New Additions
+                        </h4>
 
-            <div className="max-w-xl mb-12 text-left">
-                <h4 className="text-primary text-lg font-semibold uppercase">
-                    New Additions
-                </h4>
-                <h2 className="text-4xl md:text-5xl font-extrabold text-base-content my-3">
-                    Vehicles Added on {formatDate}
-                </h2>
-                <p className="text-base-content/70">
-                    Be the first to browse and book the newest vehicles available in our fleet today.
-                </p>
+                        <h2 className="text-4xl md:text-5xl font-extrabold text-base-content my-3">
+                            Vehicles Added on {formatDate}
+                        </h2>
+
+                        <p className="text-base-content/70">
+                            Be the first to browse and book the newest vehicles available in our fleet today.
+                        </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
+                        {latestVehicles.map(vehicle => (
+                            <Vehicles
+                                key={vehicle._id}
+                                vehicles={vehicle}
+                                refreshVehicles={fetchLatestVehicles}
+                            />
+                        ))}
+                    </div>
+                </div>
+
             </div>
-
-
-            <div className='grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 pb-16'>
-                {latestVehicles.map(vehicle => (
-                    <Vehicles
-                        key={vehicle._id}
-                        vehicles={vehicle}
-                        refreshVehicles={fetchLatestVehicles}
-                    />
-                ))}
-            </div>
-        </div>
+        </section>
+      
     );
 };
 

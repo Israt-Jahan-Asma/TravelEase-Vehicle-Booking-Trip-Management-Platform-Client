@@ -67,7 +67,7 @@ const Header = () => {
                         </ul>
                     </div>
 
-                    <img className="w-50" src="https://isratjahanasma.com/wp-content/uploads/2025/12/Gemini_Generated_Image_uvqzqluvqzqluvqz-1-1.png" alt="Logo" />
+                    <img className="w-50" src="https://isratjahanasma.com/wp-content/uploads/2026/02/Gemini_Generated_Image_uvqzqluvqzqluvqz-1-1.png" alt="Logo" />
                 </div>
 
                 {/* Center: Menu */}

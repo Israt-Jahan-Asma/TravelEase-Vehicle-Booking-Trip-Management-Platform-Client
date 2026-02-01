@@ -21,7 +21,7 @@ const Banner = () => {
     };
 
     return (
-        <div className="relative w-full h-[80vh] md:h-[100vh] overflow-hidden mb-7">
+        <div className="relative w-full h-[80vh] md:h-[100vh] overflow-hidden ">
             <Swiper
                 direction="vertical"
                 pagination={{ clickable: true }}
